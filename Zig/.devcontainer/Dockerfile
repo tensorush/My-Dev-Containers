@@ -10,7 +10,9 @@ ARG ZIG_ARCHITECTURE=x86_64
 ARG ZIG_BINARY=zig-${ZIG_PLATFORM}-${ZIG_ARCHITECTURE}-${ZIG_VERSION}
 
 RUN echo "Installing system packages..." \
-    && apk --no-cache add sudo
+    && apk --no-cache add \
+    git \
+    sudo
 
 RUN echo "Creating user ${USERNAME}..." \
     && addgroup -g ${USER_GID} -S ${USERNAME} \

@@ -9,6 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "Installing system packages..." \
     && apt -y update --no-install-recommends \
     && apt -y install --no-install-recommends \
+    git \
     sudo \
     clang \
     cmake \
