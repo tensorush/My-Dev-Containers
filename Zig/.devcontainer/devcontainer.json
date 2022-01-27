@@ -4,6 +4,11 @@
         "context": "..",
         "dockerfile": "Dockerfile",
     },
+    "runArgs": [
+        "--cap-add=SYS_PTRACE",
+        "--security-opt",
+        "seccomp=unconfined"
+    ],
     "settings": {
         "zig.zigPath": "/usr/local/bin/zig",
         "emeraldwalk.runonsave": {
@@ -17,6 +22,8 @@
     },
     "extensions": [
         "tiehuis.zig",
+        "vadimcn.vscode-lldb",
         "emeraldwalk.runonsave",
+        "mutantdino.resourcemonitor",
     ],
 }

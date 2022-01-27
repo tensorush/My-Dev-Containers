@@ -1,5 +1,5 @@
 {
-    "name": "CUDA Dev Container",
+    "name": "Rust Dev Container",
     "build": {
         "context": "..",
         "dockerfile": "Dockerfile",
@@ -9,12 +9,17 @@
         "--security-opt",
         "seccomp=unconfined"
     ],
-    "settings": {},
+    "settings": {
+        "files.watcherExclude": {
+            "**/target/**": true
+        },
+        "rust-analyzer.checkOnSave.command": "clippy"
+    },
     "extensions": [
-        "ms-vscode.cpptools",
+        "serayuzgur.crates",
         "vadimcn.vscode-lldb",
-        "ms-vscode.cmake-tools",
+        "matklad.rust-analyzer",
+        "tamasfe.even-better-toml",
         "mutantdino.resourcemonitor",
-        "nvidia.nsight-vscode-edition",
     ],
 }
