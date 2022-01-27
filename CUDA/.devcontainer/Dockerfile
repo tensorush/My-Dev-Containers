@@ -18,7 +18,7 @@ RUN echo "Installing system packages..." \
 RUN echo "Creating user ${USERNAME}..." \
     && groupadd -g ${USER_GID} ${USERNAME} \
     && useradd -u ${USER_UID} -g ${USER_GID} -s /bin/bash ${USERNAME} \
-    && echo "${USERNAME} ALL=\(root\) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME} \
+    && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
     && chmod 0440 /etc/sudoers.d/${USERNAME}
 
 ENV DEBIAN_FRONTEND=dialog

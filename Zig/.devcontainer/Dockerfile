@@ -15,7 +15,7 @@ RUN echo "Installing system packages..." \
 RUN echo "Creating user ${USERNAME}..." \
     && addgroup -g ${USER_GID} -S ${USERNAME} \
     && adduser -u ${USER_UID} -S ${USERNAME} -G ${USERNAME} -s /bin/sh -D ${USERNAME} \
-    && echo "${USERNAME} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME} \
+    && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
     && chmod 0440 /etc/sudoers.d/${USERNAME}
 
 WORKDIR /opt
