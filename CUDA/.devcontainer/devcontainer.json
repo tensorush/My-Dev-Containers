@@ -1,0 +1,13 @@
+{
+    "name": "CUDA Dev Container",
+    "build": {
+        "context": "..",
+        "dockerfile": "Dockerfile",
+    },
+    "settings": {},
+    "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools",
+        "nvidia.nsight-vscode-edition",
+    ],
+}

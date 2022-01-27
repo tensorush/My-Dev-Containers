@@ -1,0 +1,22 @@
+{
+    "name": "Zig Dev Container",
+    "build": {
+        "context": "..",
+        "dockerfile": "Dockerfile",
+    },
+    "settings": {
+        "zig.zigPath": "/usr/local/bin/zig",
+        "emeraldwalk.runonsave": {
+            "commands": [
+                {
+                    "match": "\\.zig$",
+                    "cmd": "zig fmt ${file}",
+                }
+            ]
+        }
+    },
+    "extensions": [
+        "tiehuis.zig",
+        "emeraldwalk.runonsave",
+    ],
+}
