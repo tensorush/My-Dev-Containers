@@ -6,7 +6,7 @@ ARG USER_GID=${USER_UID}
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN echo "Installing system packages..." \
+RUN echo "Installing packages..." \
     && apt -y update --no-install-recommends \
     && apt -y install --no-install-recommends \
     git \

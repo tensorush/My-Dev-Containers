@@ -9,7 +9,7 @@ ARG ZIG_PLATFORM=linux
 ARG ZIG_ARCHITECTURE=x86_64
 ARG ZIG_BINARY=zig-${ZIG_PLATFORM}-${ZIG_ARCHITECTURE}-${ZIG_VERSION}
 
-RUN echo "Installing system packages..." \
+RUN echo "Installing packages..." \
     && apk --no-cache add \
     git \
     sudo
