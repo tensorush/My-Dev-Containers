@@ -4,6 +4,8 @@
         "context": "..",
         "dockerfile": "Dockerfile",
     },
+    "workspaceMount": "type=bind,src=${localWorkspaceFolder},dst=${localWorkspaceFolder}",
+    "workspaceFolder": "${localWorkspaceFolder}",
     "runArgs": [
         "--cap-add=SYS_PTRACE",
         "--security-opt",
