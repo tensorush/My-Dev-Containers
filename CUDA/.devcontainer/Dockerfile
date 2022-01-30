@@ -1,6 +1,6 @@
-ARG CUDA_VERSION=10.2
+ARG CUDA_VERSION=11.6.0
 ARG CUDA_FLAVOR=devel
-ARG CUDA_PLATFORM=ubuntu18.04
+ARG CUDA_PLATFORM=ubuntu20.04
 
 FROM nvidia/cuda:${CUDA_VERSION}-${CUDA_FLAVOR}-${CUDA_PLATFORM}
 
@@ -15,7 +15,7 @@ ARG CMAKE_BINARY=cmake-${CMAKE_VERSION}-${CMAKE_PLATFORM}-${CMAKE_ARCHITECTURE}
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PATH=/usr/local/cuda-${CUDA_VERSION}/bin:${PATH}
-ENV LD_LIBRARY_PATH=/usr/local/cuda-${CUDA_VERSION}/lib64:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH=/usr/local/cuda-${CUDA_VERSION}/lib64:${LD_LIBRARY_PATH}
 
 RUN echo "Installing packages..." \
     && apt -y update --no-install-recommends \
