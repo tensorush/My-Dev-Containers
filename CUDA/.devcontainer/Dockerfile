@@ -29,8 +29,8 @@ ENV GROUP_ID=1000
 ENV USERNAME=tensorush
 
 RUN echo "Creating user ${USERNAME}..." \
-    && groupadd -g ${USER_GID} ${USERNAME} \
-    && useradd -u ${USER_UID} -g ${USER_GID} -s /usr/bin/fish ${USERNAME} \
+    && groupadd -g ${GROUP_ID} ${USERNAME} \
+    && useradd -u ${USER_ID} -g ${GROUP_ID} -s /usr/bin/fish ${USERNAME} \
     && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
     && chmod 0440 /etc/sudoers.d/${USERNAME}
 

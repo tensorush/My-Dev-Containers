@@ -8,9 +8,11 @@
     "workspaceFolder": "/home/tensorush/${localWorkspaceFolderBasename}",
     "extensions": [
         "ms-python.python",
+        "innerlee.nvidia-smi",
         "mutantdino.resourcemonitor",
         "kevinrose.vsc-python-indent",
         "ms-azuretools.vscode-docker",
+        "rsip-vision.nvidia-smi-plus",
         "streetsidesoftware.code-spell-checker",
     ],
 }

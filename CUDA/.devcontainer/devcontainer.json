@@ -13,10 +13,12 @@
     ],
     "extensions": [
         "ms-vscode.cpptools",
+        "innerlee.nvidia-smi",
         "vadimcn.vscode-lldb",
         "ms-vscode.cmake-tools",
         "mutantdino.resourcemonitor",
         "ms-azuretools.vscode-docker",
+        "rsip-vision.nvidia-smi-plus",
         "nvidia.nsight-vscode-edition",
         "streetsidesoftware.code-spell-checker",
     ],
