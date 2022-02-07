@@ -4,13 +4,8 @@
         "context": "..",
         "dockerfile": "Dockerfile",
     },
-    "workspaceMount": "type=bind,src=${localWorkspaceFolder},dst=${localWorkspaceFolder}",
-    "workspaceFolder": "${localWorkspaceFolder}",
-    "runArgs": [
-        "--cap-add=SYS_PTRACE",
-        "--security-opt",
-        "seccomp=unconfined"
-    ],
+    "workspaceMount": "type=bind,src=${localWorkspaceFolder},dst=/home/tensorush/${localWorkspaceFolderBasename}",
+    "workspaceFolder": "/home/tensorush/${localWorkspaceFolderBasename}",
     "settings": {
         "zig.zigPath": "/usr/local/bin/zig",
         "emeraldwalk.runonsave": {
@@ -24,8 +19,9 @@
     },
     "extensions": [
         "tiehuis.zig",
-        "vadimcn.vscode-lldb",
         "emeraldwalk.runonsave",
         "mutantdino.resourcemonitor",
+        "ms-azuretools.vscode-docker",
+        "streetsidesoftware.code-spell-checker",
     ],
 }

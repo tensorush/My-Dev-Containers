@@ -4,13 +4,8 @@
         "context": "..",
         "dockerfile": "Dockerfile",
     },
-    "workspaceMount": "type=bind,src=${localWorkspaceFolder},dst=${localWorkspaceFolder}",
-    "workspaceFolder": "${localWorkspaceFolder}",
-    "runArgs": [
-        "--cap-add=SYS_PTRACE",
-        "--security-opt",
-        "seccomp=unconfined"
-    ],
+    "workspaceMount": "type=bind,src=${localWorkspaceFolder},dst=/home/tensorush/${localWorkspaceFolderBasename}",
+    "workspaceFolder": "/home/tensorush/${localWorkspaceFolderBasename}",
     "settings": {
         "files.watcherExclude": {
             "**/target/**": true
@@ -19,9 +14,10 @@
     },
     "extensions": [
         "serayuzgur.crates",
-        "vadimcn.vscode-lldb",
         "matklad.rust-analyzer",
         "tamasfe.even-better-toml",
         "mutantdino.resourcemonitor",
+        "ms-azuretools.vscode-docker",
+        "streetsidesoftware.code-spell-checker",
     ],
 }

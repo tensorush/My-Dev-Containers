@@ -1,35 +1,31 @@
 FROM alpine:3.15
 
-ARG USER_UID=1000
-ARG USERNAME=tensorush
-ARG USER_GID=${USER_UID}
-
-ARG ZIG_VERSION=0.9.0
-ARG ZIG_PLATFORM=linux
-ARG ZIG_ARCHITECTURE=x86_64
-ARG ZIG_BINARY=zig-${ZIG_PLATFORM}-${ZIG_ARCHITECTURE}-${ZIG_VERSION}
-
-RUN echo "Installing packages..." \
+RUN echo "Installing apk packages..." \
     && apk --no-cache add \
     git \
+    fish \
     sudo
 
-RUN echo "Creating user ${USERNAME}..." \
-    && addgroup -g ${USER_GID} -S ${USERNAME} \
-    && adduser -u ${USER_UID} -S ${USERNAME} -G ${USERNAME} -s /bin/sh -D ${USERNAME} \
-    && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
-    && chmod 0440 /etc/sudoers.d/${USERNAME}
-
-WORKDIR /opt
+ENV ZIG_VERSION=0.9.0
+ENV ZIG_PLATFORM=linux
+ENV ZIG_ARCHITECTURE=x86_64
+ENV ZIG_BINARY=zig-${ZIG_PLATFORM}-${ZIG_ARCHITECTURE}-${ZIG_VERSION}
 
 RUN echo "Installing Zig ver. ${ZIG_VERSION}..." \
+    && cd /opt \
     && wget https://ziglang.org/download/${ZIG_VERSION}/${ZIG_BINARY}.tar.xz \
     && tar -xf ${ZIG_BINARY}.tar.xz \
     && rm ${ZIG_BINARY}.tar.xz \
     && ln -s /opt/${ZIG_BINARY}/zig /usr/local/bin/zig
 
-WORKDIR /home/${USERNAME}
+ENV USER_ID=1000
+ENV GROUP_ID=1000
+ENV USERNAME=tensorush
+
+RUN echo "Creating user ${USERNAME}..." \
+    && addgroup -g ${GROUP_ID} -S ${USERNAME} \
+    && adduser -u ${USER_ID} -S ${USERNAME} -G ${USERNAME} -s /usr/bin/fish -D ${USERNAME} \
+    && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
+    && chmod 0440 /etc/sudoers.d/${USERNAME}
 
 USER ${USERNAME}
-
-ENTRYPOINT [ "/bin/sh" ]
