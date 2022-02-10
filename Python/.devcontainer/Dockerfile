@@ -1,4 +1,5 @@
-FROM nvidia/cuda:11.6.0-devel-ubuntu20.04
+FROM ubuntu:20.04
+# FROM nvidia/cuda:11.6.0-devel-ubuntu20.04
 
 RUN echo "Installing apt packages..." \
     && export DEBIAN_FRONTEND=noninteractive \
@@ -14,12 +15,21 @@ RUN echo "Installing apt packages..." \
     && apt clean -y \
     export DEBIAN_FRONTEND=dialog
 
-COPY ./requirements.txt ./
+ENV MICROMAMBA_VERSION=0.21.0
 
-RUN echo "Installing pip packages..." \
-    && python3 -m pip install -U pip \
-    && pip3 --no-cache-dir install -r ./requirements.txt \
-    && rm ./requirements.txt
+RUN echo "Installing micromamba ver. ${MICROMAMBA_VERSION}..." \
+    && cd opt \
+    && wget https://micromamba.snakepit.net/api/micromamba/linux-64/${MICROMAMBA_VERSION} \
+    && tar -xj ./micromamba-${MICROMAMBA_VERSION}*.tar \
+    && rm ./micromamba-${MICROMAMBA_VERSION}*.tar \
+    && ln -s ./micromamba/micromamba /usr/local/bin/micromamba
+
+COPY ./environment.yaml ./
+
+RUN echo "Installing micromamba packages..." \
+    && micromamba env update -n base -f ./environment.yaml \
+    && micromamba clean -ya \
+    && rm ./environment.yaml
 
 ENV USER_ID=1000
 ENV GROUP_ID=1000

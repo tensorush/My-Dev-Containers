@@ -18,7 +18,7 @@ ENV CMAKE_ARCHITECTURE=x86_64
 ENV CMAKE_BINARY=cmake-${CMAKE_VERSION}-${CMAKE_PLATFORM}-${CMAKE_ARCHITECTURE}
 
 RUN echo "Installing CMake ver. ${CMAKE_VERSION}..." \
-    && wget -q -O ./cmake.sh https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/${CMAKE_BINARY}.sh \
+    && wget -O ./cmake.sh https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/${CMAKE_BINARY}.sh \
     && mkdir /opt/cmake \
     && sh ./cmake.sh --prefix=/opt/cmake --skip-license \
     && ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake \

@@ -7,16 +7,14 @@ RUN echo "Installing apk packages..." \
     sudo
 
 ENV ZIG_VERSION=0.9.0
-ENV ZIG_PLATFORM=linux
-ENV ZIG_ARCHITECTURE=x86_64
-ENV ZIG_BINARY=zig-${ZIG_PLATFORM}-${ZIG_ARCHITECTURE}-${ZIG_VERSION}
+ENV ZIG_BINARY=zig-linux-x86_64-${ZIG_VERSION}
 
 RUN echo "Installing Zig ver. ${ZIG_VERSION}..." \
     && cd /opt \
     && wget https://ziglang.org/download/${ZIG_VERSION}/${ZIG_BINARY}.tar.xz \
-    && tar -xf ${ZIG_BINARY}.tar.xz \
-    && rm ${ZIG_BINARY}.tar.xz \
-    && ln -s /opt/${ZIG_BINARY}/zig /usr/local/bin/zig
+    && tar -xf ./${ZIG_BINARY}.tar.xz \
+    && rm ./${ZIG_BINARY}.tar.xz \
+    && ln -s ./${ZIG_BINARY}/zig /usr/local/bin/zig
 
 ENV USER_ID=1000
 ENV GROUP_ID=1000
