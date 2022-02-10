@@ -1,5 +1,4 @@
-FROM ubuntu:20.04
-# FROM nvidia/cuda:11.6.0-devel-ubuntu20.04
+FROM nvidia/cuda:11.6.0-devel-ubuntu20.04
 
 RUN echo "Installing apt packages..." \
     && export DEBIAN_FRONTEND=noninteractive \
