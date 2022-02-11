@@ -4,11 +4,14 @@ channels:
   - conda-forge
 dependencies:
   - flax=0.4.0
+  - h5py=3.6.0
   - jax=0.2.28
   - pip=22.0.3
+  - numba=0.55.1
   - numpy=1.22.2
   - plotly=5.6.0
   - jaxlib=0.1.75
   - python=3.10.2
+  - cython=0.29.27
   - pytorch=1.10.2
   - cudatoolkit=11.6.0

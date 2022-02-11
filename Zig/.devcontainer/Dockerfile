@@ -10,7 +10,7 @@ ENV ZIG_VERSION=0.9.0
 ENV ZIG_BINARY=zig-linux-x86_64-${ZIG_VERSION}
 
 RUN echo "Installing Zig ver. ${ZIG_VERSION}..." \
-    && cd /opt \
+    && cd /opt/ \
     && wget https://ziglang.org/download/${ZIG_VERSION}/${ZIG_BINARY}.tar.xz \
     && tar -xf ./${ZIG_BINARY}.tar.xz \
     && rm ./${ZIG_BINARY}.tar.xz \
