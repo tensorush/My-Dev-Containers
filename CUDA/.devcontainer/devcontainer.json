@@ -12,6 +12,7 @@
         "seccomp=unconfined"
     ],
     "extensions": [
+        "zainchen.json",
         "ms-vscode.cpptools",
         "innerlee.nvidia-smi",
         "vadimcn.vscode-lldb",

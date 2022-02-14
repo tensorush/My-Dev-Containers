@@ -13,6 +13,7 @@
         "rust-analyzer.checkOnSave.command": "clippy"
     },
     "extensions": [
+        "zainchen.json",
         "serayuzgur.crates",
         "matklad.rust-analyzer",
         "tamasfe.even-better-toml",

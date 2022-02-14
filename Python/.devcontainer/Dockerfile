@@ -35,12 +35,7 @@ USER ${USERNAME}
 RUN echo "Setting micromamba environment..." \
     && /opt/micromamba/bin/micromamba shell init -s bash -p ${HOME}/micromamba/
 
-COPY ./environment.yaml ./
-
-ENV MAMBA_ROOT_PREFIX=${HOME}/micromamba
-ENV MAMBA_EXE=/opt/micromamba/bin/micromamba
-
-RUN echo "Installing micromamba packages..." \
-    && micromamba install -yn base -f ./environment.yaml \
-    && micromamba clean -ya \
-    && rm ./environment.yaml
+# RUN echo "Installing micromamba packages... (currently must be run manually upon start-up)" \
+#     && micromamba install -yn base -f ./environment.yaml \
+#     && micromamba clean -ya \
+#     && rm ./environment.yaml

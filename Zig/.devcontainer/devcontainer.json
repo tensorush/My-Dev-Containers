@@ -19,6 +19,7 @@
     },
     "extensions": [
         "tiehuis.zig",
+        "zainchen.json",
         "emeraldwalk.runonsave",
         "mutantdino.resourcemonitor",
         "ms-azuretools.vscode-docker",

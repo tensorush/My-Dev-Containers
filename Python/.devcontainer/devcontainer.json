@@ -7,7 +7,9 @@
     "workspaceMount": "type=bind,src=${localWorkspaceFolder},dst=/home/tensorush/${localWorkspaceFolderBasename}",
     "workspaceFolder": "/home/tensorush/${localWorkspaceFolderBasename}",
     "extensions": [
+        "zainchen.json",
         "ms-python.python",
+        "redhat.vscode-yaml",
         "innerlee.nvidia-smi",
         "mutantdino.resourcemonitor",
         "kevinrose.vsc-python-indent",
