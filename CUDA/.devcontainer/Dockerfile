@@ -5,6 +5,7 @@ RUN echo "Installing apt packages..." \
     && apt -y update --no-install-recommends \
     && apt -y install --no-install-recommends \
     git \
+    curl \
     fish \
     sudo \
     clang \
@@ -13,22 +14,23 @@ RUN echo "Installing apt packages..." \
     export DEBIAN_FRONTEND=dialog
 
 ENV CMAKE_VERSION=3.22.2
+ENV CMAKE_DIR_PATH=/opt/cmake/
 
 RUN echo "Installing CMake ver. ${CMAKE_VERSION}..." \
-    && wget -O ./cmake.sh https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
-    && mkdir /opt/cmake/ \
-    && sh ./cmake.sh --prefix=/opt/cmake --skip-license \
-    && ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake \
-    && rm ./cmake.sh
+    && mkdir ${CMAKE_DIR_PATH} \
+    && curl -o ${CMAKE_DIR_PATH}cmake.sh https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
+    && sh ${CMAKE_DIR_PATH}cmake.sh --prefix=${CMAKE_DIR_PATH} --skip-license \
+    && ln -s ${CMAKE_DIR_PATH}bin/cmake /usr/local/bin/cmake \
+    && rm ${CMAKE_DIR_PATH}cmake.sh
 
 ENV USER_ID=1000
 ENV GROUP_ID=1000
-ENV USERNAME=tensorush
+ENV USER_NAME=tensorush
 
-RUN echo "Creating user ${USERNAME}..." \
-    && groupadd -g ${GROUP_ID} ${USERNAME} \
-    && useradd -u ${USER_ID} -g ${GROUP_ID} -s /usr/bin/fish -m ${USERNAME} \
-    && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
-    && chmod 0440 /etc/sudoers.d/${USERNAME}
+RUN echo "Creating user ${USER_NAME}..." \
+    && groupadd -g ${GROUP_ID} ${USER_NAME} \
+    && useradd -u ${USER_ID} -g ${GROUP_ID} -s /usr/bin/zsh -m ${USER_NAME} \
+    && echo "${USER_NAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USER_NAME} \
+    && chmod 0440 /etc/sudoers.d/${USER_NAME}
 
-USER ${USERNAME}
+USER ${USER_NAME}

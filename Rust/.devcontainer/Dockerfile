@@ -3,17 +3,18 @@ FROM rust:1.58-alpine3.15
 RUN echo "Installing apk packages..." \
     && apk --no-cache add \
     git \
+    curl \
     fish \
     sudo
 
 ENV USER_ID=1000
 ENV GROUP_ID=1000
-ENV USERNAME=tensorush
+ENV USER_NAME=tensorush
 
-RUN echo "Creating user ${USERNAME}..." \
-    && addgroup -g ${GROUP_ID} -S ${USERNAME} \
-    && adduser -u ${USER_ID} -S ${USERNAME} -G ${USERNAME} -s /usr/bin/fish -D ${USERNAME} \
-    && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
-    && chmod 0440 /etc/sudoers.d/${USERNAME}
+RUN echo "Creating user ${USER_NAME}..." \
+    && addgroup -g ${GROUP_ID} -S ${USER_NAME} \
+    && adduser -u ${USER_ID} -S ${USER_NAME} -G ${USER_NAME} -s /usr/bin/fish -D ${USER_NAME} \
+    && echo "${USER_NAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USER_NAME} \
+    && chmod 0440 /etc/sudoers.d/${USER_NAME}
 
-USER ${USERNAME}
+USER ${USER_NAME}
