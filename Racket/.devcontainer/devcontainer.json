@@ -1,0 +1,16 @@
+{
+    "name": "Racket Dev Container",
+    "build": {
+        "context": "..",
+        "dockerfile": "Dockerfile",
+    },
+    "workspaceMount": "type=bind,src=${localWorkspaceFolder},dst=/home/tensorush/${localWorkspaceFolderBasename}",
+    "workspaceFolder": "/home/tensorush/${localWorkspaceFolderBasename}",
+    "extensions": [
+        "zainchen.json",
+        "evzen-wybitul.magic-racket",
+        "mutantdino.resourcemonitor",
+        "ms-azuretools.vscode-docker",
+        "streetsidesoftware.code-spell-checker",
+    ],
+}

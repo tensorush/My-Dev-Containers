@@ -2,20 +2,10 @@ FROM alpine:3.15
 
 RUN echo "Installing apk packages..." \
     && apk --no-cache add \
+    coq \
     git \
-    curl \
     fish \
     sudo
-
-ENV ZIG_VERSION=0.9.0
-ENV ZIG_DIR_PATH=/opt/zig/
-
-RUN echo "Installing Zig ver. ${ZIG_VERSION}..." \
-    && mkdir -p ${ZIG_DIR_PATH} \
-    && curl -o ${ZIG_DIR_PATH}zig.tar.xz https://ziglang.org/download/${ZIG_VERSION}/zig-linux-x86_64-${ZIG_VERSION}.tar.xz \
-    && tar -xf ${ZIG_DIR_PATH}zig.tar.xz -C ${ZIG_DIR_PATH} \
-    && ln -s ${ZIG_DIR_PATH}zig-linux-x86_64-${ZIG_VERSION}/zig /usr/local/bin/zig \
-    && rm ${ZIG_DIR_PATH}zig.tar.xz
 
 ENV USER_ID=1000
 ENV GROUP_ID=1000

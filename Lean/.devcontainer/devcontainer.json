@@ -1,0 +1,17 @@
+{
+    "name": "Lean Dev Container",
+    "build": {
+        "context": "..",
+        "dockerfile": "Dockerfile",
+    },
+    "workspaceMount": "type=bind,src=${localWorkspaceFolder},dst=/home/tensorush/${localWorkspaceFolderBasename}",
+    "workspaceFolder": "/home/tensorush/${localWorkspaceFolderBasename}",
+    "extensions": [
+        "jroesch.lean",
+        "zainchen.json",
+        "emeraldwalk.runonsave",
+        "mutantdino.resourcemonitor",
+        "ms-azuretools.vscode-docker",
+        "streetsidesoftware.code-spell-checker",
+    ],
+}

@@ -17,7 +17,7 @@ ENV MICROMAMBA_VERSION=0.21.1
 ENV MICROMAMBA_DIR_PATH=/opt/micromamba/
 
 RUN echo "Installing micromamba ver. ${MICROMAMBA_VERSION}..." \
-    && mkdir ${MICROMAMBA_DIR_PATH} \
+    && mkdir -p ${MICROMAMBA_DIR_PATH} \
     && curl -L -o ${MICROMAMBA_DIR_PATH}${MICROMAMBA_VERSION} https://micromamba.snakepit.net/api/micromamba/linux-64/${MICROMAMBA_VERSION} \
     && tar -xf ${MICROMAMBA_DIR_PATH}${MICROMAMBA_VERSION} -C ${MICROMAMBA_DIR_PATH} \
     && rm ${MICROMAMBA_DIR_PATH}${MICROMAMBA_VERSION}

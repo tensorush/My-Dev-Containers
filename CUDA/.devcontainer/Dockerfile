@@ -17,7 +17,7 @@ ENV CMAKE_VERSION=3.22.2
 ENV CMAKE_DIR_PATH=/opt/cmake/
 
 RUN echo "Installing CMake ver. ${CMAKE_VERSION}..." \
-    && mkdir ${CMAKE_DIR_PATH} \
+    && mkdir -p ${CMAKE_DIR_PATH} \
     && curl -o ${CMAKE_DIR_PATH}cmake.sh https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
     && sh ${CMAKE_DIR_PATH}cmake.sh --prefix=${CMAKE_DIR_PATH} --skip-license \
     && ln -s ${CMAKE_DIR_PATH}bin/cmake /usr/local/bin/cmake \

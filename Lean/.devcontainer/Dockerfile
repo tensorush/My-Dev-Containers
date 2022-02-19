@@ -5,17 +5,14 @@ RUN echo "Installing apk packages..." \
     git \
     curl \
     fish \
-    sudo
+    sudo \
+    zstd
 
-ENV ZIG_VERSION=0.9.0
-ENV ZIG_DIR_PATH=/opt/zig/
+ENV LEAN_VERSION=4.0.0
 
-RUN echo "Installing Zig ver. ${ZIG_VERSION}..." \
-    && mkdir -p ${ZIG_DIR_PATH} \
-    && curl -o ${ZIG_DIR_PATH}zig.tar.xz https://ziglang.org/download/${ZIG_VERSION}/zig-linux-x86_64-${ZIG_VERSION}.tar.xz \
-    && tar -xf ${ZIG_DIR_PATH}zig.tar.xz -C ${ZIG_DIR_PATH} \
-    && ln -s ${ZIG_DIR_PATH}zig-linux-x86_64-${ZIG_VERSION}/zig /usr/local/bin/zig \
-    && rm ${ZIG_DIR_PATH}zig.tar.xz
+RUN echo "Installing Lean ver. ${LEAN_VERSION}..." \
+    && curl -o /opt/lean4.tar.zst https://github.com/leanprover/lean4/releases/download/v${LEAN_VERSION}-m3/lean-${LEAN_VERSION}-linux.tar.zst \
+    && tar --use-compress-program=unzstd -xf /opt/lean4.tar.zst -C /opt/
 
 ENV USER_ID=1000
 ENV GROUP_ID=1000
